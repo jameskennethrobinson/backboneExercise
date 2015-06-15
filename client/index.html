@@ -9,28 +9,51 @@
 
     <script src="data/data.js"></script>
 
-    <script src="models/SongModel.js"></script>
-    <script src="collections/Songs.js"></script>
-    <script src="collections/SongQueue.js"></script>
-    <script src="models/AppModel.js"></script>
+    <script src="models/Mountain.js"></script>
+    <script src="views/MountainView.js"></script>
+    <script src="views/MountainsView.js"></script>
 
-    <script src="views/PlayerView.js"></script>
-    <script src="views/LibraryView.js"></script>
-    <script src="views/LibraryEntryView.js"></script>
-    <script src="views/AppView.js"></script>
 
     <script>
+
       $(function(){
-        // set up model objects
-        var library = new Songs(songData);
-        var app = new AppModel({library: library});
 
-        // build a view for the top level of the whole app
-        var appView = new AppView({model: app});
+        var mountain1 = new Mountain({
+          name: 'mountain1',
+          image: 'images/mountain1.jpg'
+        });
 
-        // put the view onto the screen
-        $('body').append(appView.render());
+        var mountain2 = new Mountain({
+          name: 'mountain2',
+          image: 'images/mountain2.jpg'
+        });
+
+        var mountain1 = new Mountain({
+          name: 'mountain3',
+          image: 'images/mountain3.jpg'
+        });
+
+        var myMountains = new Backbone.Collection([mountain1, mountain2, mountain2], {model: Mountain});
+
+        var mountainsView = new MountainsView({collection: myMountains});
+
+        $('body').append(mountainsView.render());
+
       });
+
     </script>
+
+
+ 
+
+    <h1>Mountain Photo Application</h1>
+    <table style='width: 100%'>
+        <tr>Mountains</tr>
+            <td>Mountain1<td>
+    </table>
   </body>
 </html>
+
+
+
+
